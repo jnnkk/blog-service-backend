@@ -6,7 +6,7 @@ import java.time.LocalDateTime;
 
 @Entity
 @Table(name = "user")
-public class User {
+public class UserEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)  // AUTO_INCREMENT 매핑
     private Long id;
@@ -24,10 +24,10 @@ public class User {
     private LocalDateTime createdAt;
 
     // 기본 생성자 (JPA에서 필요)
-    public User() {}
+    public UserEntity() {}
 
     // 필드를 초기화하는 생성자
-    public User(String username, String email, String passwordHash) {
+    public UserEntity(String username, String email, String passwordHash) {
         this.username = username;
         this.email = email;
         this.passwordHash = passwordHash;

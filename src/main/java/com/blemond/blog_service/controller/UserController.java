@@ -1,6 +1,6 @@
 package com.blemond.blog_service.controller;
 
-import com.blemond.blog_service.entity.User;
+import com.blemond.blog_service.entity.UserEntity;
 import com.blemond.blog_service.service.UserService;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -16,7 +16,7 @@ public class UserController {
     }
 
     @GetMapping("/users")
-    public List<User> getAllUser() {
+    public List<UserEntity> getAllUser() {
         return userService.getUser();
     }
 
