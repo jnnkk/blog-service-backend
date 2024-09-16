@@ -1,8 +1,11 @@
 package com.blemond.blog_service.controller;
 
-import com.blemond.blog_service.entity.UserEntity;
+import com.blemond.blog_service.dto.UserRequestDto;
+import com.blemond.blog_service.dto.UserResponseDto;
 import com.blemond.blog_service.service.UserService;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
@@ -16,16 +19,16 @@ public class UserController {
     }
 
     @GetMapping("/users")
-    public List<UserEntity> getAllUser() {
-        return userService.getUser();
+    public List<UserResponseDto> getAllUser() {
+        return userService.getAllUser();
     }
 
-//    public User getUserById(Long id) {
-//    }
-//
-//    public User postUser(User user) {
-//    }
-//
+    @PostMapping("/users")
+    public UserRequestDto postUser(@RequestBody UserRequestDto userRequestDto) {
+        userService.saveUser(userRequestDto);
+        return userRequestDto;
+    }
+
 //    public User deleteUser(Long id, User user) {
 //    }
 //

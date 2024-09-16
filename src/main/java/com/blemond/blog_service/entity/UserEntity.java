@@ -1,11 +1,18 @@
 package com.blemond.blog_service.entity;
 
+import com.blemond.blog_service.dto.UserResponseDto;
 import jakarta.persistence.*;
+import lombok.Builder;
+import lombok.Getter;
+import lombok.Setter;
+import org.springframework.boot.autoconfigure.elasticsearch.ElasticsearchConnectionDetails;
 
 import java.time.LocalDateTime;
 
 @Entity
 @Table(name = "user")
+@Getter
+@Setter
 public class UserEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)  // AUTO_INCREMENT 매핑
@@ -27,51 +34,21 @@ public class UserEntity {
     public UserEntity() {}
 
     // 필드를 초기화하는 생성자
-    public UserEntity(String username, String email, String passwordHash) {
+    @Builder
+    public UserEntity(String username, String email, String passwordHash, LocalDateTime createdAt) {
         this.username = username;
         this.email = email;
         this.passwordHash = passwordHash;
-        this.createdAt = LocalDateTime.now();
-    }
-
-    // Getters and Setters
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
-
-    public String getUsername() {
-        return username;
-    }
-
-    public void setUsername(String username) {
-        this.username = username;
-    }
-
-    public String getEmail() {
-        return email;
-    }
-
-    public void setEmail(String email) {
-        this.email = email;
-    }
-
-    public String getPasswordHash() {
-        return passwordHash;
-    }
-
-    public void setPasswordHash(String passwordHash) {
-        this.passwordHash = passwordHash;
-    }
-
-    public LocalDateTime getCreatedAt() {
-        return createdAt;
-    }
-
-    public void setCreatedAt(LocalDateTime createdAt) {
         this.createdAt = createdAt;
+    }
+
+    public static UserResponseDto toDto(UserEntity userEntity) {
+        return UserResponseDto.builder()
+                .id(userEntity.getId())
+                .username(userEntity.getUsername())
+                .email(userEntity.getEmail())
+                .passwordHash(userEntity.getPasswordHash())
+                .createdAt(userEntity.getCreatedAt())
+                .build();
     }
 }
