@@ -8,8 +8,9 @@ import java.time.LocalDateTime;
 @Setter
 public class UserResponseDto {
     private Long id;
+    private String userId;
+    private String password;
     private String username;
     private String email;
-    private String password;
     private LocalDateTime createdAt;
 }

@@ -27,6 +27,7 @@ public class UserService {
 
     public void createUser(UserRequestDto userRequestDto) {
         UserEntity userEntity = UserEntity.builder()
+                .userId(userRequestDto.getUserId())
                 .username(userRequestDto.getUsername())
                 .email(userRequestDto.getEmail())
                 .password(userRequestDto.getPassword())

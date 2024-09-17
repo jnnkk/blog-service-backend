@@ -17,22 +17,26 @@ public class UserEntity {
     private Long id;
 
     @Column(nullable = false, unique = true)
+    private String userId;
+
+    @Column(nullable = false)
+    private String password;
+
+    @Column(nullable = false, unique = true)
     private String username;
 
     @Column(nullable = false, unique = true)
     private String email;
 
-    @Column(nullable = false)
-    private String password;
-
     @Column(nullable = false, updatable = false)
     private LocalDateTime createdAt;
 
     @Builder
-    public UserEntity(String username, String email, String password, LocalDateTime createdAt) {
+    public UserEntity(String userId, String password, String username, String email, LocalDateTime createdAt) {
+        this.userId = userId;
+        this.password = password;
         this.username = username;
         this.email = email;
-        this.password = password;
         this.createdAt = createdAt;
     }
 }
