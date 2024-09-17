@@ -1,4 +1,4 @@
-package com.blemond.blog_service;
+package com.blog_service;
 
 import com.ulisesbocchio.jasyptspringboot.annotation.EnableEncryptableProperties;
 import org.jasypt.encryption.StringEncryptor;

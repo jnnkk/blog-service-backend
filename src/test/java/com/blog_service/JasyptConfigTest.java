@@ -1,4 +1,4 @@
-package com.blemond.blog_service;
+package com.blog_service;
 
 import org.jasypt.encryption.pbe.StandardPBEStringEncryptor;
 import org.junit.jupiter.api.Test;

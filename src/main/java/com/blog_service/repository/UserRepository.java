@@ -1,6 +1,6 @@
-package com.blemond.blog_service.repository;
+package com.blog_service.repository;
 
-import com.blemond.blog_service.entity.UserEntity;
+import com.blog_service.entity.UserEntity;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
