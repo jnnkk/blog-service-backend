@@ -19,12 +19,14 @@ public class UserService {
         this.userRepository = userRepository;
     }
 
+    // 모든 사용자 정보를 조회하는 메소드
     public List<UserResponseDto> getAllUser() {
         return userRepository.findAll().stream()
-                .map(user -> modelMapper.map(user, UserResponseDto.class))
+                .map(user -> modelMapper.map(user, UserResponseDto.class)) // UserEntity -> UserResponseDto로 변환
                 .toList();
     }
 
+    // 사용자 정보를 생성하는 메소드
     public void createUser(UserRequestDto userRequestDto) {
         UserEntity userEntity = UserEntity.builder()
                 .userId(userRequestDto.getUserId())
