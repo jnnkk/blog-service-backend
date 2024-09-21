@@ -37,8 +37,8 @@ public class UserController {
 
     // PATCH /users/{userId} 요청을 처리하는 메소드
     @PatchMapping("/users/{userId}")
-    public ResponseEntity<Object> patchUser(@Valid @PathVariable String userId,
-                                            @RequestBody UserDto.UserPatchRequestDto userPatchRequestDto) {
+    public ResponseEntity<Object> patchUser(@PathVariable String userId,
+                                            @Valid @RequestBody UserDto.UserPatchRequestDto userPatchRequestDto) {
         UserDto.UserResponseDto userResponseDto = userService.updateUser(userId, userPatchRequestDto);
         return ResponseEntity.status(HttpStatus.OK).body(userResponseDto);
     }
