@@ -42,4 +42,10 @@ public class UserController {
         UserDto.UserResponseDto userResponseDto = userService.updateUser(userId, userPatchRequestDto);
         return ResponseEntity.status(HttpStatus.OK).body(userResponseDto);
     }
+
+    @DeleteMapping("/users/{userId}")
+    public ResponseEntity<Object> deleteUser(@PathVariable String userId) {
+        userService.deleteUser(userId);
+        return ResponseEntity.status(HttpStatus.NO_CONTENT).build();
+    }
 }

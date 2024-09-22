@@ -64,4 +64,10 @@ public class UserService {
 
         return modelMapper.map(userEntity, UserDto.UserResponseDto.class);
     }
+
+    public void deleteUser(String userId) {
+        UserEntity userEntity = userRepository.findByUserId(userId)
+                .orElseThrow(() -> new IllegalArgumentException("사용자를 찾을 수 없습니다."));
+        userRepository.delete(userEntity);
+    }
 }
