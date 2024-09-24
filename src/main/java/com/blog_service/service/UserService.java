@@ -4,20 +4,20 @@ import com.blog_service.dto.UserDto;
 import com.blog_service.entity.UserEntity;
 import com.blog_service.repository.UserRepository;
 import jakarta.transaction.Transactional;
+import lombok.RequiredArgsConstructor;
 import org.modelmapper.ModelMapper;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDateTime;
 import java.util.List;
 
 @Service
+@RequiredArgsConstructor
 public class UserService {
     private final UserRepository userRepository;
+    private final PasswordEncoder passwordEncoder;
     private final ModelMapper modelMapper = new ModelMapper();
-
-    public UserService(UserRepository userRepository) {
-        this.userRepository = userRepository;
-    }
 
     // 모든 사용자 정보를 조회하는 메소드
     public List<UserDto.UserResponseDto> getAllUser() {
@@ -32,7 +32,7 @@ public class UserService {
                 .userId(userGetRequestDto.getUserId())
                 .username(userGetRequestDto.getUsername())
                 .email(userGetRequestDto.getEmail())
-                .password(userGetRequestDto.getPassword())
+                .password(passwordEncoder.encode(userGetRequestDto.getPassword()))
                 .createdAt(LocalDateTime.now())
                 .build();
         userRepository.save(userEntity);
