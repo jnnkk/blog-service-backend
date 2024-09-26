@@ -1,6 +1,5 @@
-package com.blog_service.service;
+package com.blog_service.auth;
 
-import com.blog_service.auth.CustomUserDetails;
 import com.blog_service.entity.UserEntity;
 import com.blog_service.repository.UserRepository;
 import lombok.RequiredArgsConstructor;

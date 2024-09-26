@@ -1,6 +1,6 @@
 package com.blog_service.config;
 
-import com.blog_service.service.CustomUserDetailsService;
+import com.blog_service.auth.CustomUserDetailsService;
 import com.nimbusds.jose.JOSEException;
 import com.nimbusds.jose.jwk.JWKSet;
 import com.nimbusds.jose.jwk.RSAKey;
@@ -28,7 +28,6 @@ import java.security.KeyPair;
 import java.security.KeyPairGenerator;
 import java.security.NoSuchAlgorithmException;
 import java.security.interfaces.RSAPublicKey;
-import java.util.List;
 import java.util.UUID;
 
 @Configuration
