@@ -2,9 +2,6 @@ package com.blog_service.config;
 
 import com.blog_service.service.CustomUserDetailsService;
 import com.nimbusds.jose.JOSEException;
-import com.nimbusds.jose.KeySourceException;
-import com.nimbusds.jose.jwk.JWK;
-import com.nimbusds.jose.jwk.JWKSelector;
 import com.nimbusds.jose.jwk.JWKSet;
 import com.nimbusds.jose.jwk.RSAKey;
 import com.nimbusds.jose.jwk.source.JWKSource;
@@ -19,8 +16,6 @@ import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configurers.AbstractHttpConfigurer;
 import org.springframework.security.config.http.SessionCreationPolicy;
-import org.springframework.security.core.userdetails.UserDetailsService;
-import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.oauth2.jwt.JwtDecoder;
 import org.springframework.security.oauth2.jwt.JwtEncoder;
@@ -54,7 +49,7 @@ public class JwtSecurityConfig {
                     .anyRequest().authenticated());
 
         http    .csrf(AbstractHttpConfigurer::disable) // CSRF 보안 설정 비활성화
-                .httpBasic(Customizer.withDefaults()) // HTTP Basic 인증 비활성화, 활성화하면 로그인창이 뜸
+                .httpBasic(Customizer.withDefaults()) // HTTP Basic 인증 활성화
                 .formLogin(AbstractHttpConfigurer::disable); // 폼 로그인 비활성화
 
         http    .oauth2ResourceServer(oauth2 -> oauth2.jwt(Customizer.withDefaults())) // OAuth2 리소스 서버 설정
