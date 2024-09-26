@@ -27,7 +27,8 @@ dependencies {
     implementation 'io.jsonwebtoken:jjwt-api:0.11.5' // jwt
     implementation 'com.github.ulisesbocchio:jasypt-spring-boot-starter:3.0.5' // application.proerties 암호화
     implementation 'org.modelmapper:modelmapper:3.1.0'
-    implementation 'org.springframework.boot:spring-boot-starter-jdbc'
+    implementation 'org.springframework.boot:spring-boot-starter-jdbc' // jdbc
+    implementation 'org.springframework.boot:spring-boot-starter-oauth2-resource-server' // oauth2
 
     runtimeOnly 'com.mysql:mysql-connector-j'
     runtimeOnly 'io.jsonwebtoken:jjwt-impl:0.11.5' // jwt
